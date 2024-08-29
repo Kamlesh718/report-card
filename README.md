@@ -77,9 +77,6 @@ function UploadForm() {
 export default UploadForm;
 
 # App.js
-import UploadForm from "./UploadForm";
-import DownloadReport from "./DownloadReport";
-import "./App.css";
 
 function App() {
   return (
