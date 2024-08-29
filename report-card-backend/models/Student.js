@@ -8,7 +8,7 @@ const StudentSchema = new mongoose.Schema({
     address: { type: String },
     contactNumber: { type: String },
   },
-  marks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Marks" }], // References to Marks documents
+  marks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Marks" }],
 });
 
 module.exports = mongoose.model("Student", StudentSchema);

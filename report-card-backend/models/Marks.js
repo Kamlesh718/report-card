@@ -5,7 +5,7 @@ const MarksSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Student",
     required: true,
-  }, // Reference to Student
+  },
   subject: { type: String, required: true },
   marksObtained: { type: Number, required: true },
   totalMarks: { type: Number, required: true },

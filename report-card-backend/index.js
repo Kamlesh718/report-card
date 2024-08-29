@@ -10,23 +10,18 @@ mongoose.set("strictPopulate", false);
 const Student = require("./models/Student");
 const Marks = require("./models/Marks");
 
-// Initialize Express app
 const app = express();
 
-// Configure CORS
 app.use(
   cors({
     origin: "http://localhost:3000",
   })
 );
 
-// Middleware
 app.use(express.json());
 
-// Multer setup for file uploads
 const upload = multer({ dest: "uploads/" });
 
-// Connect to MongoDB
 mongoose
   .connect("mongodb://localhost:27017/reportCardDB", {
     useNewUrlParser: true,
@@ -70,12 +65,10 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 
       await marks.save();
 
-      // Update the student's marks array
       student.marks.push(marks._id);
       await student.save();
     }
 
-    // Clean up the uploaded file
     fs.unlinkSync(file.path);
 
     res.send("Data uploaded successfully");
@@ -93,7 +86,7 @@ app.get("/generate-report", async (req, res) => {
 
     for (let student of students) {
       const page = pdfDoc.addPage([595, 842]); // A4 size
-      page.drawText(`Report Card for ${student.name}`, {
+      page.drawText(`Report Card for ${student.name} `, {
         x: 50,
         y: 800,
         size: 18,
@@ -132,7 +125,6 @@ app.get("/generate-report", async (req, res) => {
     fs.writeFileSync(pdfPath, pdfBytes);
 
     res.download(pdfPath, () => {
-      // Clean up the generated PDF after download
       fs.unlinkSync(pdfPath);
     });
   } catch (error) {
@@ -143,6 +135,5 @@ app.get("/generate-report", async (req, res) => {
   }
 });
 
-// Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
