@@ -1,6 +1,8 @@
 There was some issue regarding repo thats why i pasted the frontend code in here for reference
 
  # Download.js
+  <!---
+
 function DownloadReport() {
   const handleDownload = async () => {
     try {
@@ -30,8 +32,11 @@ function DownloadReport() {
 }
 
 export default DownloadReport;
+  --->
+
 
 # Upload.js
+  <!---
 import  { useState } from "react";
 
 function UploadForm() {
@@ -76,8 +81,10 @@ function UploadForm() {
 
 export default UploadForm;
 
+  --->
 # App.js
 
+  <!---
 function App() {
   return (
     <div className="App">
@@ -90,3 +97,5 @@ function App() {
 
 export default App;
 
+
+  --->
